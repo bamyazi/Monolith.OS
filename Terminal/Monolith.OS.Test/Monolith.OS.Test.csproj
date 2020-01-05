@@ -1,0 +1,60 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Programs\ADD_AddIndirectRegisterToRegister.asm" />
+    <None Remove="Programs\ADD_AddNegativeValueToRegister.asm" />
+    <None Remove="Programs\ADD_AddRegisterToRegister.asm" />
+    <None Remove="Programs\ADD_AddValueToRegister.asm" />
+    <None Remove="Programs\CALL_CallToLabel.asm" />
+    <None Remove="Programs\CMP_CompareRegisterToValue.asm" />
+    <None Remove="Programs\EXIT_ExitValue.asm" />
+    <None Remove="Programs\JMP_JumpLessThanToLabel.asm" />
+    <None Remove="Programs\JMP_JumpToLabel.asm" />
+    <None Remove="Programs\MOV_LoadMemoryFromIndirectRegister.asm" />
+    <None Remove="Programs\MOV_LoadMemoryFromRegister.asm" />
+    <None Remove="Programs\MOV_LoadMemoryFromValue.asm" />
+    <None Remove="Programs\MOV_LoadRegisterFromIndirectRegister.asm" />
+    <None Remove="Programs\MOV_LoadRegisterFromMemory.asm" />
+    <None Remove="Programs\MOV_LoadRegisterFromRegister.asm" />
+    <None Remove="Programs\MOV_LoadRegisterFromValue.asm" />
+    <None Remove="Programs\PUSH_PushValueToStack.asm" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Programs\ADD_AddIndirectRegisterToRegister.asm" />
+    <EmbeddedResource Include="Programs\ADD_AddRegisterToRegister.asm" />
+    <EmbeddedResource Include="Programs\ADD_AddNegativeValueToRegister.asm" />
+    <EmbeddedResource Include="Programs\JMP_JumpLessThanToLabel.asm" />
+    <EmbeddedResource Include="Programs\CALL_CallToLabel.asm" />
+    <EmbeddedResource Include="Programs\JMP_JumpToLabel.asm" />
+    <EmbeddedResource Include="Programs\EXIT_ExitValue.asm" />
+    <EmbeddedResource Include="Programs\MOV_LoadMemoryFromIndirectRegister.asm" />
+    <EmbeddedResource Include="Programs\MOV_LoadMemoryFromRegister.asm" />
+    <EmbeddedResource Include="Programs\MOV_LoadMemoryFromValue.asm" />
+    <EmbeddedResource Include="Programs\MOV_LoadRegisterFromIndirectRegister.asm" />
+    <EmbeddedResource Include="Programs\MOV_LoadRegisterFromRegister.asm" />
+    <EmbeddedResource Include="Programs\MOV_LoadRegisterFromMemory.asm" />
+    <EmbeddedResource Include="Programs\CMP_CompareRegisterToValue.asm" />
+    <EmbeddedResource Include="Programs\PUSH_PushValueToStack.asm" />
+    <EmbeddedResource Include="Programs\MOV_LoadRegisterFromValue.asm" />
+    <EmbeddedResource Include="Programs\ADD_AddValueToRegister.asm" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
+    <PackageReference Include="coverlet.collector" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Monolith.OS.Parser\Monolith.OS.Parser.csproj" />
+  </ItemGroup>
+
+</Project>

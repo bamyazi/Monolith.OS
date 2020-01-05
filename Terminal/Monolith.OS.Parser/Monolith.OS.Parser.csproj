@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>Monolith.OS.Parser</RootNamespace>
+    <ApplicationIcon />
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="assembler.g4" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Antlr4 Include="assembler.g4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.7.2" />
+    <PackageReference Include="Antlr4BuildTasks" Version="1.0.8" />
+    <PackageReference Include="System.CodeDom" Version="4.5.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(JAVA_HOME)'==''">
+    <JAVA_HOME>C:\Program Files\Java\jdk-11.0.1</JAVA_HOME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Antlr4ToolPath)'==''">
+    <Antlr4ToolPath>C:\Program Files\Java\javalib\antlr-4.7.2-complete.jar</Antlr4ToolPath>
+  </PropertyGroup>
+
+</Project>
