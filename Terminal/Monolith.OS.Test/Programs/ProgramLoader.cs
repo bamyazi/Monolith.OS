@@ -18,10 +18,20 @@ namespace Monolith.OS.Test
       }
     }
 
-    public static ProcessContext Load(string name)
+    public static ProcessContext LoadAssembly(string name)
     {
       var sourceCode = LoadSourceCode(name);
       var compiler = new AssemblyCodeCompiler();
+      var program = compiler.Compile(sourceCode);
+      ProcessContext process = new ProcessContext();
+      process.LoadProgram(program);
+      return process;
+    }
+
+    public static ProcessContext LoadCLang(string name)
+    {
+      var sourceCode = LoadSourceCode(name);
+      var compiler = new CLangCodeCompiler();
       var program = compiler.Compile(sourceCode);
       ProcessContext process = new ProcessContext();
       process.LoadProgram(program);

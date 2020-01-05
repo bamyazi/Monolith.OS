@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
@@ -8,9 +8,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="assembler.g4" />
+    <None Remove="clang.g4" />
   </ItemGroup>
   
   <ItemGroup>
+    <Antlr4 Include="clang.g4" />
     <Antlr4 Include="assembler.g4" />
   </ItemGroup>
 

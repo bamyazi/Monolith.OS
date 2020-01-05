@@ -2,23 +2,22 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Monolith.OS.Parser;
 
 namespace Monolith.OS.Test
 {
   [TestClass]
-  public class PUSH_InstructionTests
+  public class CALL_InstructionTests
   {
     [TestMethod]
-    public void PushValueToStack()
+    public void JumpToLabel()
     {
-      var process = ProgramLoader.Load("PUSH_PushValueToStack.asm");
+      var process = ProgramLoader.LoadAssembly("CALL_CallToLabel.asm");
       while (!process.Exited)
       {
         process.Tick();
       }
-      Assert.AreEqual(20, process.Stack.Pop());
       Assert.AreEqual(10, process.Registers[(int)Register.AX]);
+      Assert.AreEqual(100, process.Registers[(int)Register.BX]);
     }
   }
 }

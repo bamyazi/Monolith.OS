@@ -11,7 +11,7 @@ namespace Monolith.OS.Test
     [TestMethod]
     public void AddValueToRegister()
     {
-      var process = ProgramLoader.Load("ADD_AddValueToRegister.asm");
+      var process = ProgramLoader.LoadAssembly("ADD_AddValueToRegister.asm");
       while (!process.Exited)
       {
         process.Tick();
@@ -22,7 +22,7 @@ namespace Monolith.OS.Test
     [TestMethod]
     public void AddRegisterToRegister()
     {
-      var process = ProgramLoader.Load("ADD_AddRegisterToRegister.asm");
+      var process = ProgramLoader.LoadAssembly("ADD_AddRegisterToRegister.asm");
       while (!process.Exited)
       {
         process.Tick();
@@ -33,7 +33,7 @@ namespace Monolith.OS.Test
     [TestMethod]
     public void AddIndirectRegisterToRegister()
     {
-      var process = ProgramLoader.Load("ADD_AddIndirectRegisterToRegister.asm");
+      var process = ProgramLoader.LoadAssembly("ADD_AddIndirectRegisterToRegister.asm");
       while (!process.Exited)
       {
         process.Tick();
@@ -44,7 +44,7 @@ namespace Monolith.OS.Test
     [TestMethod]
     public void AddNegativeValueToRegister()
     {
-      var process = ProgramLoader.Load("ADD_AddNegativeValueToRegister.asm");
+      var process = ProgramLoader.LoadAssembly("ADD_AddNegativeValueToRegister.asm");
       while (!process.Exited)
       {
         process.Tick();

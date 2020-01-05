@@ -6,17 +6,17 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Monolith.OS.Test
 {
   [TestClass]
-  public class CMP_InstructionTests
+  public class EXIT_InstructionTests
   {
     [TestMethod]
-    public void CompareRegisterToValue()
+    public void ExitValue()
     {
-      var process = ProgramLoader.Load("CMP_CompareRegisterToValue.asm");
+      var process = ProgramLoader.LoadAssembly("EXIT_ExitValue.asm");
       while (!process.Exited)
       {
         process.Tick();
       }
-      Assert.AreEqual(true, process.LessFlag);
+      Assert.AreEqual(process.ExitCode, 12345);
     }
   }
 }

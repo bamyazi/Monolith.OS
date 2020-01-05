@@ -13,7 +13,7 @@ namespace Monolith.OS.Test.Programs
     [TestMethod]
     public void LoadRegisterFromValueTest()
     {
-      var process = ProgramLoader.Load("MOV_LoadRegisterFromValue.asm");
+      var process = ProgramLoader.LoadAssembly("MOV_LoadRegisterFromValue.asm");
       while (!process.Exited)
       {
         process.Tick();
@@ -24,7 +24,7 @@ namespace Monolith.OS.Test.Programs
     [TestMethod]
     public void LoadRegisterFromRegisterTest()
     {
-      var process = ProgramLoader.Load("MOV_LoadRegisterFromRegister.asm");
+      var process = ProgramLoader.LoadAssembly("MOV_LoadRegisterFromRegister.asm");
       while (!process.Exited)
       {
         process.Tick();
@@ -35,7 +35,7 @@ namespace Monolith.OS.Test.Programs
     [TestMethod]
     public void LoadRegisterFromMemoryTest()
     {
-      var process = ProgramLoader.Load("MOV_LoadRegisterFromMemory.asm");
+      var process = ProgramLoader.LoadAssembly("MOV_LoadRegisterFromMemory.asm");
       process.ProcessMemory[0] = 12345;
       while (!process.Exited)
       {
@@ -47,7 +47,7 @@ namespace Monolith.OS.Test.Programs
     [TestMethod]
     public void LoadRegisterFromIndirectRegister()
     {
-      var process = ProgramLoader.Load("MOV_LoadRegisterFromIndirectRegister.asm");
+      var process = ProgramLoader.LoadAssembly("MOV_LoadRegisterFromIndirectRegister.asm");
       process.ProcessMemory[0] = 1000;
       process.ProcessMemory[1000] = 12345;
       while (!process.Exited)
@@ -60,7 +60,7 @@ namespace Monolith.OS.Test.Programs
     [TestMethod]
     public void LoadMemoryFromValue()
     {
-      var process = ProgramLoader.Load("MOV_LoadMemoryFromValue.asm");
+      var process = ProgramLoader.LoadAssembly("MOV_LoadMemoryFromValue.asm");
       while (!process.Exited)
       {
         process.Tick();
@@ -71,7 +71,7 @@ namespace Monolith.OS.Test.Programs
     [TestMethod]
     public void LoadMemoryFromRegister()
     {
-      var process = ProgramLoader.Load("MOV_LoadMemoryFromRegister.asm");
+      var process = ProgramLoader.LoadAssembly("MOV_LoadMemoryFromRegister.asm");
       while (!process.Exited)
       {
         process.Tick();
@@ -82,7 +82,7 @@ namespace Monolith.OS.Test.Programs
     [TestMethod]
     public void LoadMemoryFromIndirectRegister()
     {
-      var process = ProgramLoader.Load("MOV_LoadMemoryFromIndirectRegister.asm");
+      var process = ProgramLoader.LoadAssembly("MOV_LoadMemoryFromIndirectRegister.asm");
       process.ProcessMemory[1] = 12345;
       while (!process.Exited)
       {
