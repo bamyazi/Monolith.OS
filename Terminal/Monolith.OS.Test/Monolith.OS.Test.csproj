@@ -12,7 +12,6 @@
     <None Remove="Programs\ADD_AddRegisterToRegister.asm" />
     <None Remove="Programs\ADD_AddValueToRegister.asm" />
     <None Remove="Programs\CALL_CallToLabel.asm" />
-    <None Remove="Programs\CLANG_HelloWorld.c" />
     <None Remove="Programs\CMP_CompareRegisterToValue.asm" />
     <None Remove="Programs\EXIT_ExitValue.asm" />
     <None Remove="Programs\JMP_JumpLessThanToLabel.asm" />
@@ -31,7 +30,6 @@
     <EmbeddedResource Include="Programs\ADD_AddIndirectRegisterToRegister.asm" />
     <EmbeddedResource Include="Programs\ADD_AddRegisterToRegister.asm" />
     <EmbeddedResource Include="Programs\ADD_AddNegativeValueToRegister.asm" />
-    <EmbeddedResource Include="Programs\CLANG_HelloWorld.c" />
     <EmbeddedResource Include="Programs\JMP_JumpLessThanToLabel.asm" />
     <EmbeddedResource Include="Programs\CALL_CallToLabel.asm" />
     <EmbeddedResource Include="Programs\JMP_JumpToLabel.asm" />

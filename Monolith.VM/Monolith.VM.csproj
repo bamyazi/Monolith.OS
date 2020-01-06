@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6D4477EC-0A11-42BD-A209-3FF720D4094A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Monolith.VM</RootNamespace>
+    <AssemblyName>Monolith.VM</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Compiler\Instructions\ADD_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\ASSIGN_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\BaseInstruction.cs" />
+    <Compile Include="Compiler\Instructions\BEGIN_SCOPE_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\CALL_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\COMPARE_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\DIVIDE_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\END_SCOPE_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\EXEC_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\EXIT_Instruction.cs" />
+    <Compile Include="Model\IInstruction.cs" />
+    <Compile Include="Compiler\Instructions\JUMP_EQUAL_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\JUMP_GREATER_THAN_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\JUMP_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\JUMP_LESS_THAN_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\JUMP_NOT_EQUAL_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\LOCK_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\MULTIPLY_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\POP_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\PUSH_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\READ_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\RELEASE_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\RETURN_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\SUBTRACT_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\WAIT_Instruction.cs" />
+    <Compile Include="Compiler\Instructions\WRITE_Instruction.cs" />
+    <Compile Include="Model\Argument.cs" />
+    <Compile Include="Model\ArgumentType.cs" />
+    <Compile Include="Compiler\ICompiler.cs" />
+    <Compile Include="Compiler\MonoLangCompiler.cs" />
+    <Compile Include="ErrorListener.cs" />
+    <Compile Include="Exceptions\CompilationExcetion.cs" />
+    <Compile Include="Exceptions\InvalidArgumentException.cs" />
+    <Compile Include="Exceptions\UnexpectedProcessTerminationException.cs" />
+    <Compile Include="Model\IProcess.cs" />
+    <Compile Include="Model\Machine.cs" />
+    <Compile Include="Model\OpCode.cs" />
+    <Compile Include="Model\Priority.cs" />
+    <Compile Include="Model\ProcessContext.cs" />
+    <Compile Include="Model\Program.cs" />
+    <Compile Include="Model\Scope.cs" />
+    <Compile Include="Model\DataTable.cs" />
+    <Compile Include="Output.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.7.2" />
+    <PackageReference Include="Antlr4BuildTasks" Version="1.0.8" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="3.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Antlr4 Include="Grammar\MonoLang.g4" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup Condition="'$(JAVA_HOME)'==''">
+    <JAVA_HOME>C:\Program Files\Java\jdk-11.0.1</JAVA_HOME>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Antlr4ToolPath)'==''">
+    <Antlr4ToolPath>C:\Program Files\Java\javalib\antlr-4.7.2-complete.jar</Antlr4ToolPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -27,15 +27,5 @@ namespace Monolith.OS.Test
       process.LoadProgram(program);
       return process;
     }
-
-    public static ProcessContext LoadCLang(string name)
-    {
-      var sourceCode = LoadSourceCode(name);
-      var compiler = new CLangCodeCompiler();
-      var program = compiler.Compile(sourceCode);
-      ProcessContext process = new ProcessContext();
-      process.LoadProgram(program);
-      return process;
-    }
   }
 }
