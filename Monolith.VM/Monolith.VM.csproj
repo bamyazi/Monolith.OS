@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compiler\ExpressionFactory.cs" />
+    <Compile Include="Compiler\InstructionFactory.cs" />
     <Compile Include="Compiler\Instructions\ADD_Instruction.cs" />
     <Compile Include="Compiler\Instructions\ASSIGN_Instruction.cs" />
     <Compile Include="Compiler\Instructions\BaseInstruction.cs" />
@@ -50,6 +52,12 @@
     <Compile Include="Compiler\Instructions\END_SCOPE_Instruction.cs" />
     <Compile Include="Compiler\Instructions\EXEC_Instruction.cs" />
     <Compile Include="Compiler\Instructions\EXIT_Instruction.cs" />
+    <Compile Include="Compiler\MonoLangProgramBuilder.cs" />
+    <Compile Include="Compiler\VariableFactory.cs" />
+    <Compile Include="Exceptions\InvalidInstructionException.cs" />
+    <Compile Include="Exceptions\ParserException.cs" />
+    <Compile Include="Model\EqualityFlag.cs" />
+    <Compile Include="Model\IExpression.cs" />
     <Compile Include="Model\IInstruction.cs" />
     <Compile Include="Compiler\Instructions\JUMP_EQUAL_Instruction.cs" />
     <Compile Include="Compiler\Instructions\JUMP_GREATER_THAN_Instruction.cs" />
@@ -66,22 +74,25 @@
     <Compile Include="Compiler\Instructions\SUBTRACT_Instruction.cs" />
     <Compile Include="Compiler\Instructions\WAIT_Instruction.cs" />
     <Compile Include="Compiler\Instructions\WRITE_Instruction.cs" />
-    <Compile Include="Model\Argument.cs" />
-    <Compile Include="Model\ArgumentType.cs" />
     <Compile Include="Compiler\ICompiler.cs" />
     <Compile Include="Compiler\MonoLangCompiler.cs" />
     <Compile Include="ErrorListener.cs" />
     <Compile Include="Exceptions\CompilationExcetion.cs" />
-    <Compile Include="Exceptions\InvalidArgumentException.cs" />
     <Compile Include="Exceptions\UnexpectedProcessTerminationException.cs" />
+    <Compile Include="Model\Index.cs" />
+    <Compile Include="Model\IndexedVariable.cs" />
     <Compile Include="Model\IProcess.cs" />
+    <Compile Include="Model\IVariable.cs" />
     <Compile Include="Model\Machine.cs" />
+    <Compile Include="Model\NumberLiteral.cs" />
     <Compile Include="Model\OpCode.cs" />
     <Compile Include="Model\Priority.cs" />
     <Compile Include="Model\ProcessContext.cs" />
     <Compile Include="Model\Program.cs" />
     <Compile Include="Model\Scope.cs" />
     <Compile Include="Model\DataTable.cs" />
+    <Compile Include="Model\NamedVariable.cs" />
+    <Compile Include="Model\StringLiteral.cs" />
     <Compile Include="Output.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

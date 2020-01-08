@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Antlr4.Runtime;
+using Monolith.VM.Exceptions;
 using Monolith.VM.Model;
 
 namespace Monolith.VM.Compiler
@@ -18,17 +19,18 @@ namespace Monolith.VM.Compiler
       var tokens = new CommonTokenStream(lexer);
       var parser = new MonoLangParser(tokens);
       var errorListener = new ErrorListener<IToken>();
+      var programBuilder = new MonoLangProgramBuilder();
+      parser.AddParseListener(programBuilder);
       parser.AddErrorListener(errorListener);
       var tree = parser.prog();
       if (errorListener.had_error)
       {
-        throw new CompilationExcetion();
+        throw new ParserException();
       }
       
       Debug.WriteLine(Output.OutputTokens(tokens.GetTokens()));
-      //var visitor = new AssemblyCodeCompilerVisitor();
-      //return visitor.Visit(tree);
-      return null;
+
+      return programBuilder.Program;
     }
   }
 }

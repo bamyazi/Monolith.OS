@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks;using Monolith.VM.Compiler.Instructions;
+using Monolith.VM.Model;
 
 namespace Monolith.VM.Compiler.Instructions
 {
-  class ADD_Instruction
+  public class ADD_Instruction : BaseInstruction
   {
+    public override void Execute(ProcessContext context)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

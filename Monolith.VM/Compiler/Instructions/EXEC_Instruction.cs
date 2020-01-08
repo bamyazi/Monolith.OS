@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Monolith.VM.Model;
 
 namespace Monolith.VM.Compiler.Instructions
 {
-  class EXEC_Instruction
+  public class EXEC_Instruction : BaseInstruction
   {
+    public override void Execute(ProcessContext context)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

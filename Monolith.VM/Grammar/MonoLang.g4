@@ -18,6 +18,11 @@ label
 	: name ':'
 	;
 
+address
+	: name
+	| NUMBER
+	;
+
 name
 	: NAME
 	;
@@ -27,40 +32,59 @@ instruction
 	;
 
 operation
-    : opcode 
+    : begin_scope 
+	| end_scope
+	| assign var expression
+	| compare expression expression
+	| add var expression
+	| subtract var expression
+	| multiply var expression
+	| divide var expression
+	| push expression
+	| pop var
+	| jump address
+	| jump_equal address
+	| jump_not_equal address
+	| jump_less_than address
+	| jump_greater_than address
+	| call address
+	| return
+	| write var expression
+	| read var expression
     ;
 
-opcode
-	: BEGIN_SCOPE 
-	| END_SCOPE
-	| ASSIGN var argument
-	| COMPARE argument argument
-	| ADD var argument
-	| SUBTRACT var argument
-	| MULTIPLY var argument 
-	| DIVIDE var argument
-	| PUSH argument
-	| POP var
-	| JUMP label
-	| JUMP_EQUAL label
-	| JUMP_NOT_EQUAL label
-	| JUMP_LESS_THAN label
-	| JUMP_GREATER_THAN label
-	| CALL 
-	| RETURN
-	| WRITE var argument
-	| READ var argument
-	| EXEC
-	| LOCK lock
-	| RELEASE lock
-	| WAIT lock
-	| EXIT argument
+begin_scope : BEGIN_SCOPE ;
+end_scope : END_SCOPE ;
+assign : ASSIGN ;
+compare : COMPARE;
+add : ADD;
+subtract : SUBTRACT;
+multiply : MULTIPLY;
+divide : DIVIDE;
+push : PUSH;
+pop : POP;
+jump : JUMP;
+jump_equal : JUMP_EQUAL;
+jump_not_equal : JUMP_NOT_EQUAL;
+jump_less_than : JUMP_LESS_THAN;
+jump_greater_than : JUMP_GREATER_THAN;
+call : CALL;
+return : RETURN;
+write : WRITE;
+read : READ;
+
+expression
+	: var
+	| literal
 	;
 
-argument
-	: var
+var 
+	: named_var
 	| indexed_var
-	| literal
+	;
+
+named_var
+	: name
 	;
 
 indexed_var
@@ -78,14 +102,6 @@ range
 range_start : NUMBER ;
 range_end : NUMBER ;
 
-var 
-	: name
-	;
-
-lock
-	: name
-	;
-
 literal
 	: string_literal
 	| number_literal
@@ -97,7 +113,7 @@ list_literal
 	;
 
 list_values
-	: argument (COMMA argument)*
+	: expression (COMMA expression)*
 	;
 
 string_literal

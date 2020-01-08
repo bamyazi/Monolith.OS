@@ -18,11 +18,6 @@ namespace Monolith.VM.Model
     DIVIDE,
     PUSH,
     POP,
-    // BITWISE OPERATIONS
-    BIT_OR,
-    BIT_XOR,
-    BIT_NOT,
-    BIT_AND,
     JUMP,
     JUMP_EQUAL,
     JUMP_NOT_EQUAL,
@@ -33,7 +28,6 @@ namespace Monolith.VM.Model
     WRITE,
     READ,
     EXEC,
-    // PROCESS CONTROL
     LOCK,
     RELEASE,
     WAIT

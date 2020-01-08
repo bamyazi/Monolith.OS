@@ -16,12 +16,24 @@ namespace Monolith.VM.Model
     public Program Program { get; private set; }
     public uint InstructionPointer { get; private set; }
 
+    public bool Terminated { get; internal set; }
+    public EqualityFlag EqualityFlag { get; internal set; }
+
     #region IProcess Members
 
     public Priority Priority { get; set; }
 
     public void Tick()
     {
+      var instruction = Program.Instructions[InstructionPointer];
+      instruction.Execute(this);
+      if (Terminated) return;
+      InstructionPointer++;
+      if (InstructionPointer >= Program.Instructions.Length)
+      {
+        Terminated = true;
+        //todo: Handle unexpected terminiation
+      }
     }
 
     #endregion
@@ -30,6 +42,7 @@ namespace Monolith.VM.Model
     {
       Program = program;
       InstructionPointer = 0;
+      Terminated = false;
     }
   }
 }

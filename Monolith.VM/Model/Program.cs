@@ -8,9 +8,9 @@ namespace Monolith.VM.Model
 {
   public class Program
   {
-    public  List<IInstruction> Instructions { get; private set; }
+    public  IInstruction[] Instructions { get; private set; }
 
-    public void Load(List<IInstruction> instructions)
+    public void Load(IInstruction[] instructions)
     {
       Instructions = instructions;
     }

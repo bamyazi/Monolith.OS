@@ -20,6 +20,11 @@ namespace Monolith.VM.Test
       var machine = new Machine();
       var process = machine.CreateProcess();
       process.LoadProgram(program);
+
+      while (!process.Terminated)
+      {
+       process.Tick(); 
+      }
     }
   }
 }
