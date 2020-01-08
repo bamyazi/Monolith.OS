@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,14 +21,8 @@ namespace Monolith.VM.Compiler.Instructions
     }
     public override void Execute(ProcessContext context)
     {
-      var leftValue = _leftExpression.GetValue(context);
-      var rightValue = _rightExpression.GetValue(context);
-
-      if (leftValue == rightValue)
-        context.EqualityFlag = EqualityFlag.Equal;
-      else 
-        context.EqualityFlag = EqualityFlag.Less;
-
+      context.EqualityFlag = _leftExpression.Compare(context, _rightExpression);
+      Debug.WriteLine($"Compare {_leftExpression}, {_rightExpression} -> {context.EqualityFlag}");
     }
   }
 }

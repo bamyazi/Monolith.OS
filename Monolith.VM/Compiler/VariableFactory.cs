@@ -18,10 +18,10 @@ namespace Monolith.VM.Compiler
       {
         return new NamedVariable(namedVar.name().NAME().GetText());
       } 
-      else if (indexedVar != null)
-      {
-        return new IndexedVariable(indexedVar.name().NAME().GetText(), new Index(0,0));
-      }
+      //else if (indexedVar != null)
+      //{
+      //  return new IndexedVariable(indexedVar.name().NAME().GetText(), new Index(0,0));
+      //}
       return null;
     }
   }

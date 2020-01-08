@@ -8,20 +8,65 @@ namespace Monolith.VM.Model
 {
   public class NamedVariable : IVariable, IExpression
   {
-    private string _name;
+    public string Name { get; private set; }
+
+    private DataType _dataType;
+    public DataType DataType => _dataType;
     public NamedVariable(string name)
     {
-      _name = name;
+      Name = name;
     }
 
-    public object GetValue(ProcessContext context)
+    public IExpression Clone()
     {
-      return context.Data.GetValue(_name);
+      return this;
     }
 
-    public void SetValue(ProcessContext context, object value)
+    public T GetValue<T>(ProcessContext context)
     {
-      context.Data.SetValue(_name, value);
+      var expression = context.Data.GetValue(Name);
+      return expression.GetValue<T>(context);
+    }
+
+    public void SetValue(ProcessContext context, IExpression value)
+    {
+      _dataType = value.DataType;
+      context.Data.SetValue(Name, value);
+    }
+
+    public EqualityFlag Compare(ProcessContext context, IExpression expression)
+    {
+      var valueExpression = context.Data.GetValue(Name);
+      return valueExpression.Compare(context, expression);
+    }
+
+    public void Add(ProcessContext context, IExpression expression)
+    {
+      var valueExpression = context.Data.GetValue(Name);
+      valueExpression.Add(context, expression);
+    }
+
+    public void Subtract(ProcessContext context, IExpression expression)
+    {
+      var valueExpression = context.Data.GetValue(Name);
+      valueExpression.Subtract(context, expression);
+    }
+
+    public void Multiply(ProcessContext context, IExpression expression)
+    {
+      var valueExpression = context.Data.GetValue(Name);
+      valueExpression.Multiply(context, expression);
+    }
+
+    public void Divide(ProcessContext context, IExpression expression)
+    {
+      var valueExpression = context.Data.GetValue(Name);
+      valueExpression.Divide(context, expression);
+    }
+
+    public override string ToString()
+    {
+      return $"{Name}";
     }
   }
 }

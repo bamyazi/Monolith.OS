@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,8 @@ namespace Monolith.VM.Compiler.Instructions
 
     public override void Execute(ProcessContext context)
     {
-      _variable.SetValue(context, _expression.GetValue(context));
+      _variable.SetValue(context, _expression.Clone());
+      Debug.WriteLine($"Assign {_variable} = {_expression}");
     }
   }
 }

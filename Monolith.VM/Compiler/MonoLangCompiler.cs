@@ -28,7 +28,7 @@ namespace Monolith.VM.Compiler
         throw new ParserException();
       }
       
-      Debug.WriteLine(Output.OutputTokens(tokens.GetTokens()));
+      //Debug.WriteLine(Output.OutputTokens(tokens.GetTokens()));
 
       return programBuilder.Program;
     }

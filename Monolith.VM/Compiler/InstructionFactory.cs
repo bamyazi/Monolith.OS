@@ -25,27 +25,27 @@ namespace Monolith.VM.Compiler
         case OpCode.COMPARE:
           return new COMPARE_Instruction(context.expression());
         case OpCode.ADD:
-          return new ADD_Instruction();        
+          return new ADD_Instruction(context.var(), context.expression());       
         case OpCode.SUBTRACT:
-          return new SUBTRACT_Instruction();
+          return new SUBTRACT_Instruction(context.var(), context.expression());
         case OpCode.MULTIPLY:
-          return new MULTIPLY_Instruction();
+          return new MULTIPLY_Instruction(context.var(), context.expression());
         case OpCode.DIVIDE:
-          return new DIVIDE_Instruction();
+          return new DIVIDE_Instruction(context.var(), context.expression());
         case OpCode.PUSH:
           return new PUSH_Instruction();
         case OpCode.POP:
           return new POP_Instruction();
         case OpCode.JUMP:
-          return new JUMP_Instruction();
+          return new JUMP_Instruction(context.address());
         case OpCode.JUMP_EQUAL:
-          return new JUMP_EQUAL_Instruction();
+          return new JUMP_EQUAL_Instruction(context.address());
         case OpCode.JUMP_NOT_EQUAL:
-          return new JUMP_NOT_EQUAL_Instruction();
+          return new JUMP_NOT_EQUAL_Instruction(context.address());
         case OpCode.JUMP_LESS_THAN:
-          return new JUMP_LESS_THAN_Instruction();
+          return new JUMP_LESS_THAN_Instruction(context.address());
         case OpCode.JUMP_GREATER_THAN:
-          return new JUMP_GREATER_THAN_Instruction();
+          return new JUMP_GREATER_THAN_Instruction(context.address());
         case OpCode.CALL:
           return new CALL_Instruction();
         case OpCode.RETURN:
@@ -62,7 +62,8 @@ namespace Monolith.VM.Compiler
           return new RELEASE_Instruction();
         case OpCode.WAIT:
           return new WAIT_Instruction();
-
+        case OpCode.EXIT:
+          return new EXIT_Instruction(context.expression());
         default:
           throw new InvalidInstructionException(opCode);
       }

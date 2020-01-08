@@ -30,6 +30,7 @@ namespace Monolith.VM.Model
     EXEC,
     LOCK,
     RELEASE,
-    WAIT
+    WAIT,
+    EXIT
   }
 }

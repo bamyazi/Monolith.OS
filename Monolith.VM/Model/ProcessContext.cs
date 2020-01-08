@@ -17,6 +17,7 @@ namespace Monolith.VM.Model
     public uint InstructionPointer { get; private set; }
 
     public bool Terminated { get; internal set; }
+    public IExpression ExitCode { get; internal set; }
     public EqualityFlag EqualityFlag { get; internal set; }
 
     #region IProcess Members
@@ -43,6 +44,11 @@ namespace Monolith.VM.Model
       Program = program;
       InstructionPointer = 0;
       Terminated = false;
+    }
+
+    public void Jump(uint address)
+    {
+      InstructionPointer = address - 1;
     }
   }
 }

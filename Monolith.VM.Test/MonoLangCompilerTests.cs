@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,15 @@ namespace Monolith.VM.Test
       while (!process.Terminated)
       {
        process.Tick(); 
+      }
+
+      if (process.ExitCode == null)
+      {
+        Debug.WriteLine("Unexpected termination.");
+      }
+      else
+      {
+        Debug.WriteLine($"{process.ExitCode}");
       }
     }
   }

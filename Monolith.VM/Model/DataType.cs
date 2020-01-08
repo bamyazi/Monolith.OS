@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Monolith.VM.Model
 {
-  public enum EqualityFlag
+  public enum DataType
   {
-    Less,
-    Equal,
-    Greater,
-    NotEqual
+    Int,
+    Float,
+    String
   }
 }

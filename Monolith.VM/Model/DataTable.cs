@@ -8,14 +8,14 @@ namespace Monolith.VM.Model
 {
   public class DataTable
   {
-    private Dictionary<string, object> _data = new Dictionary<string, object>();
+    private Dictionary<string, IExpression> _data = new Dictionary<string, IExpression>();
 
-    public void SetValue(string name, object value)
+    public void SetValue(string name, IExpression value)
     {
       _data[name] = value;
     }
 
-    public object GetValue(string name)
+    public IExpression GetValue(string name)
     {
       return _data[name];
     }

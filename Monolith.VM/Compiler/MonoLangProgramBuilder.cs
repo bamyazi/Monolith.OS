@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Monolith.VM.Compiler.Instructions;
 using Monolith.VM.Model;
 
 namespace Monolith.VM.Compiler
@@ -24,6 +26,18 @@ namespace Monolith.VM.Compiler
 
     public override void ExitProg(MonoLangParser.ProgContext context)
     {
+      foreach (var instruction in _instructions)
+      {
+        if (instruction is ILabeledInstruction labeledInstruction)
+        {
+          if (labeledInstruction.LabelName != null)
+          {
+            uint labelValue = _labels[labeledInstruction.LabelName];
+            labeledInstruction.ReplaceLabel(labelValue);
+          }
+        }
+      }
+
       Program.Load(_instructions.ToArray());
       base.ExitProg(context);
     }
@@ -34,6 +48,7 @@ namespace Monolith.VM.Compiler
       var instructionName = operation.children[0].GetText();
       var opCode = (OpCode) Enum.Parse(typeof(OpCode), instructionName.ToUpper());
       _instructions.Add(InstructionFactory.BuildInstruction(opCode, operation));
+      _instructionIndex++;
       base.ExitInstruction(context);
     }
 
@@ -42,6 +57,7 @@ namespace Monolith.VM.Compiler
       var labelName = context.name().NAME().GetText();
       if (!_labels.ContainsKey(labelName))
       {
+        Debug.WriteLine($"Label [{labelName}] = {_instructionIndex}");
         _labels.Add(labelName, _instructionIndex);
       }
       else

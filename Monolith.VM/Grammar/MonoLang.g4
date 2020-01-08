@@ -51,6 +51,7 @@ operation
 	| return
 	| write var expression
 	| read var expression
+	| exit expression
     ;
 
 begin_scope : BEGIN_SCOPE ;
@@ -72,10 +73,16 @@ call : CALL;
 return : RETURN;
 write : WRITE;
 read : READ;
+exit : EXIT;
 
 expression
-	: var
+	: var_pointer
+	| var
 	| literal
+	;
+
+var_pointer
+	: var'->'
 	;
 
 var 

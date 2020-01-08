@@ -12,11 +12,13 @@ namespace Monolith.VM.Compiler
     public static IExpression BuildExpression(MonoLangParser.ExpressionContext context)
     {
       var varExpression = context.var();
+      var varPointerExpression = context.var_pointer();
       var literalExpression = context.literal();
+
       if (varExpression != null)
       {
         return (IExpression) VariableFactory.BuildVariable(varExpression);
-      } 
+      }
       else if (literalExpression != null)
       {
         var stringLiteral = literalExpression.string_literal();
@@ -27,7 +29,8 @@ namespace Monolith.VM.Compiler
         }
         else if (numberLiteral != null)
         {
-          return new NumberLiteral(numberLiteral.NUMBER().GetText());
+          var numText = numberLiteral.NUMBER().GetText();
+          return new IntLiteral(int.Parse(numText));
         }
       }
       return null;

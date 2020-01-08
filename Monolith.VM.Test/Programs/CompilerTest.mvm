@@ -2,8 +2,16 @@
 ; THIS IS A TEST OF THE COMPILER
 ; ******************************
 
-Label1:
-	assign var1 10
-	assign var2 10
-	compare var1 var2
+Start:
+	assign var1 0
+	assign var2 var1
+	assign var3 var1->
+
+	add var3 10
+	compare var1 10
+
+End:
+	exit "Got to end"
+
+
 

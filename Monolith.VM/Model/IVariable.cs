@@ -9,7 +9,7 @@ namespace Monolith.VM.Model
 {
   public interface IVariable 
   {
-    object GetValue(ProcessContext context);
-    void SetValue(ProcessContext context, object value);
+    string Name { get; }
+    void SetValue(ProcessContext context, IExpression value);
   }
 }
