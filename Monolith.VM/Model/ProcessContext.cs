@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Monolith.VM.Model
 {
@@ -15,16 +16,17 @@ namespace Monolith.VM.Model
     public DataTable Data { get; } = new DataTable();
     public Program Program { get; private set; }
     public uint InstructionPointer { get; private set; }
-
-    public bool Terminated { get; internal set; }
-    public IExpression ExitCode { get; internal set; }
+    public bool Terminated { get; set; }
+    public IExpression ExitCode { get; set; }
     public EqualityFlag EqualityFlag { get; internal set; }
+
+    private Dictionary<string,IDevice> _devices { get; set; } = new Dictionary<string, IDevice>();
 
     #region IProcess Members
 
     public Priority Priority { get; set; }
 
-    public void Tick()
+    public void Tick(float dt)
     {
       var instruction = Program.Instructions[InstructionPointer];
       instruction.Execute(this);
@@ -35,6 +37,16 @@ namespace Monolith.VM.Model
         Terminated = true;
         //todo: Handle unexpected terminiation
       }
+    }
+
+    public void RegisterDevice(string name, IDevice device)
+    {
+      _devices.Add(name, device);
+    }
+
+    public IDevice GetDevice(string name)
+    {
+      return _devices[name.ToUpper()];
     }
 
     #endregion

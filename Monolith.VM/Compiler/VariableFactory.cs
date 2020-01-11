@@ -9,14 +9,14 @@ namespace Monolith.VM.Compiler
 {
   public static class VariableFactory
   {
-    public static IVariable BuildVariable(MonoLangParser.VarContext context)
+    public static IVariable BuildVariable(MonoLangParser.VarContext context, bool isPointer = false)
     {
       var namedVar = context.named_var();
       var indexedVar = context.indexed_var();
 
       if (namedVar != null)
       {
-        return new NamedVariable(namedVar.name().NAME().GetText());
+        return new NamedVariable(namedVar.name().NAME().GetText(), isPointer);
       } 
       //else if (indexedVar != null)
       //{

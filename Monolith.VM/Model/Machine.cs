@@ -29,16 +29,34 @@ namespace Monolith.VM.Model
 
     }
 
-    public ProcessContext CreateProcess()
+    public IProcess CreateProcess()
     {
       var process = new ProcessContext(this, _processIndex);
+      _processes.Add(_processIndex, process);
       _processIndex++;
       return process;
     }
 
-    public void Tick()
+    private List<IProcess> _terminatedProcesses = new List<IProcess>();
+    public void Tick(float dt)
     {
+      _terminatedProcesses.Clear();
+      foreach (var process in _processes.Values)
+      {
+        if (!process.Terminated)
+        {
+          process.Tick(dt);
+        }
+        else
+        {
+          _terminatedProcesses.Add(process);
+        }
+      }
 
+      foreach (var process in _terminatedProcesses)
+      {
+        _processes.Remove(process.ProcessId);
+      }
     }
   }
 }

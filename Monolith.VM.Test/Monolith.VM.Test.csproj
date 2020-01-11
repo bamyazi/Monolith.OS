@@ -53,6 +53,7 @@
     <Compile Include="ProgramLoader.cs" />
     <Compile Include="ProgramLoaderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestDevice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

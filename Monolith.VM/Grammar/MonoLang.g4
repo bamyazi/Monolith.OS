@@ -23,6 +23,10 @@ address
 	| NUMBER
 	;
 
+port
+	: '$' name
+	;
+
 name
 	: NAME
 	;
@@ -49,8 +53,8 @@ operation
 	| jump_greater_than address
 	| call address
 	| return
-	| write var expression
-	| read var expression
+	| write port expression
+	| read var port
 	| exit expression
     ;
 

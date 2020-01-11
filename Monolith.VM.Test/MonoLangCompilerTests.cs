@@ -20,11 +20,13 @@ namespace Monolith.VM.Test
 
       var machine = new Machine();
       var process = machine.CreateProcess();
+      process.RegisterDevice("TERMINAL", new TestDevice());
+
       process.LoadProgram(program);
 
       while (!process.Terminated)
       {
-       process.Tick(); 
+       process.Tick(1); 
       }
 
       if (process.ExitCode == null)

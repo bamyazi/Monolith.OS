@@ -10,6 +10,8 @@ Start:
 	add var3 10
 	compare var1 10
 
+	write $TERMINAL "Hello World"
+
 End:
 	exit "Got to end"
 

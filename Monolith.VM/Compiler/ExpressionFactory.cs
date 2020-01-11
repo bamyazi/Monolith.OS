@@ -17,7 +17,11 @@ namespace Monolith.VM.Compiler
 
       if (varExpression != null)
       {
-        return (IExpression) VariableFactory.BuildVariable(varExpression);
+        return (IExpression) VariableFactory.BuildVariable(varExpression, false);
+      }
+      else if (varPointerExpression != null)
+      {
+        return (IExpression) VariableFactory.BuildVariable(varPointerExpression.var(), true);
       }
       else if (literalExpression != null)
       {

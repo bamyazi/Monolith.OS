@@ -53,12 +53,14 @@
     <Compile Include="Compiler\Instructions\EXEC_Instruction.cs" />
     <Compile Include="Compiler\Instructions\EXIT_Instruction.cs" />
     <Compile Include="Compiler\Instructions\ILabeledInstruction.cs" />
+    <Compile Include="Compiler\Instructions\MAP_Instruction.cs" />
     <Compile Include="Compiler\MonoLangProgramBuilder.cs" />
     <Compile Include="Compiler\VariableFactory.cs" />
     <Compile Include="Exceptions\InvalidInstructionException.cs" />
     <Compile Include="Exceptions\ParserException.cs" />
     <Compile Include="Model\DataType.cs" />
     <Compile Include="Model\EqualityFlag.cs" />
+    <Compile Include="Model\IDevice.cs" />
     <Compile Include="Model\IExpression.cs" />
     <Compile Include="Model\IInstruction.cs" />
     <Compile Include="Compiler\Instructions\JUMP_EQUAL_Instruction.cs" />
@@ -106,7 +108,9 @@
   <ItemGroup>
     <Antlr4 Include="Grammar\MonoLang.g4" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Grammar\readme.txt" />
+  </ItemGroup>
   <PropertyGroup Condition="'$(JAVA_HOME)'==''">
     <JAVA_HOME>C:\Program Files\Java\jdk-11.0.1</JAVA_HOME>
   </PropertyGroup>

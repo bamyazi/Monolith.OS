@@ -10,11 +10,14 @@ namespace Monolith.VM.Model
   {
     public string Name { get; private set; }
 
+    private bool _isPointer;
+
     private DataType _dataType;
     public DataType DataType => _dataType;
-    public NamedVariable(string name)
+    public NamedVariable(string name, bool isPointer)
     {
       Name = name;
+      _isPointer = isPointer;
     }
 
     public IExpression Clone()
