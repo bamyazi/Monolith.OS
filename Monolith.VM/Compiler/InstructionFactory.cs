@@ -53,7 +53,7 @@ namespace Monolith.VM.Compiler
         case OpCode.WRITE:
           return new WRITE_Instruction(context.port(), context.expression());
         case OpCode.READ:
-          return  new READ_Instruction();
+          return  new READ_Instruction(context.port(), context.var());
         case OpCode.EXEC:
           return new EXEC_Instruction();
         case OpCode.LOCK:

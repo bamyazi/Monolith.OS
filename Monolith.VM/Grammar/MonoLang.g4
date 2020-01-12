@@ -54,7 +54,7 @@ operation
 	| call address
 	| return
 	| write port expression
-	| read var port
+	| read port var
 	| exit expression
     ;
 

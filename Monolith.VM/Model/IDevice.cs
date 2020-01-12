@@ -9,5 +9,6 @@ namespace Monolith.VM.Model
   public interface IDevice
   {
     void Write<T>(T value);
+    T Read<T>();
   }
 }
