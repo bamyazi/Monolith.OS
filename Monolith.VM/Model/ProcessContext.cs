@@ -20,7 +20,10 @@ namespace Monolith.VM.Model
     public IExpression ExitCode { get; set; }
     public EqualityFlag EqualityFlag { get; internal set; }
 
-    private Dictionary<string,IDevice> _devices { get; set; } = new Dictionary<string, IDevice>();
+    public Stack<IExpression> DataStack { get; private set; } = new Stack<IExpression>();
+    public Stack<uint> AddressStack { get; private set; }= new Stack<uint>();
+
+    private readonly Dictionary<string,IDevice> _devices = new Dictionary<string, IDevice>();
 
     #region IProcess Members
 

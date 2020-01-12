@@ -33,9 +33,9 @@ namespace Monolith.VM.Compiler
         case OpCode.DIVIDE:
           return new DIVIDE_Instruction(context.var(), context.expression());
         case OpCode.PUSH:
-          return new PUSH_Instruction();
+          return new PUSH_Instruction(context.expression());
         case OpCode.POP:
-          return new POP_Instruction();
+          return new POP_Instruction(context.var());
         case OpCode.JUMP:
           return new JUMP_Instruction(context.address());
         case OpCode.JUMP_EQUAL:
@@ -47,7 +47,7 @@ namespace Monolith.VM.Compiler
         case OpCode.JUMP_GREATER_THAN:
           return new JUMP_GREATER_THAN_Instruction(context.address());
         case OpCode.CALL:
-          return new CALL_Instruction();
+          return new CALL_Instruction(context.address());
         case OpCode.RETURN:
           return new RETURN_Instruction();
         case OpCode.WRITE:

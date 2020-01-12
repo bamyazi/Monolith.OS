@@ -11,7 +11,8 @@ namespace Monolith.VM.Compiler.Instructions
   {
     public override void Execute(ProcessContext context)
     {
-      throw new NotImplementedException();
+      uint address = context.AddressStack.Pop();
+      context.Jump(address + 1);
     }
   }
 }

@@ -1,19 +1,12 @@
-﻿; ******************************
-; THIS IS A TEST OF THE COMPILER
-; ******************************
-
-Start:
-	assign var1 0
-	assign var2 var1
-	assign var3 var1->
-
-	add var3 10
-	compare var1 10
-
-	write $TERMINAL "Hello World"
-
-End:
-	exit "Got to end"
+﻿; MACHINE CORE
+start:
+	assign counter 1
+loop:
+	assign message "Hello World "
+	add message counter
+	write $TERMINAL message
+	add counter 1
+	jump loop
 
 
 
