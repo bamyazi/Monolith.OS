@@ -29,7 +29,8 @@ namespace Monolith.VM.Compiler
         var numberLiteral = literalExpression.number_literal();
         if (stringLiteral != null)
         {
-          return new StringLiteral(stringLiteral.STRING().GetText());
+          var text = stringLiteral.STRING().GetText();
+          return new StringLiteral(text.Substring(1, text.Length-2));
         }
         else if (numberLiteral != null)
         {

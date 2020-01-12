@@ -8,7 +8,7 @@ namespace Monolith.VM.Model
 
     public StringLiteral(string value)
     {
-      _value = value.Substring(1, value.Length - 2);
+      _value = value;
     }
 
     public IExpression Clone()
