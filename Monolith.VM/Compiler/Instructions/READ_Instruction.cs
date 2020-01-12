@@ -20,9 +20,12 @@ namespace Monolith.VM.Compiler.Instructions
 
     public override void Execute(ProcessContext context)
     {
+      if (_variable is NamedVariable namedVariable)
+      {
+        namedVariable.SetProcess(context);
+      }
       var device = context.GetDevice(_portName);
-      var test = device.Read<string>();
-      _variable.SetValue(context, new StringLiteral(test));
+      _variable.SetValue(device.Read());
     }
   }
 }

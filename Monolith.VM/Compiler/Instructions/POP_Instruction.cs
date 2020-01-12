@@ -18,8 +18,12 @@ namespace Monolith.VM.Compiler.Instructions
 
     public override void Execute(ProcessContext context)
     {
+      if (_variable is NamedVariable namedVariable)
+      {
+        namedVariable.SetProcess(context);
+      }
       var expression = context.DataStack.Pop();
-      _variable.SetValue(context, expression.Clone());
+      _variable.SetValue(expression.Clone());
     }
   }
 }

@@ -20,20 +20,20 @@ namespace Monolith.VM.Model
 
     public DataType DataType => DataType.Int;
 
-    public T GetValue<T>(ProcessContext context)
+    public T GetValue<T>()
     {
       var castType = typeof(T);
       return (T) Convert.ChangeType(_value, castType);
     }
 
-    public EqualityFlag Compare(ProcessContext context, IExpression expression)
+    public EqualityFlag Compare(IExpression expression)
     {
       if (expression.DataType == DataType.String)
       {
         return EqualityFlag.NotEqual;
       }
 
-      var compareValue = expression.GetValue<int>(context);
+      var compareValue = expression.GetValue<int>();
 
       if (_value == compareValue)
       {
@@ -48,44 +48,44 @@ namespace Monolith.VM.Model
       return EqualityFlag.Greater;
     }
 
-    public void Add(ProcessContext context, IExpression expression)
+    public void Add(IExpression expression)
     {
       if (expression.DataType == DataType.String)
       {
         throw new Exception("Cannot add String to Int.");
       }
 
-      _value += expression.GetValue<int>(context);
+      _value += expression.GetValue<int>();
     }
 
-    public void Subtract(ProcessContext context, IExpression expression)
+    public void Subtract(IExpression expression)
     {
       if (expression.DataType == DataType.String)
       {
         throw new Exception("Cannot substract String from Int.");
       }
 
-      _value -= expression.GetValue<int>(context);
+      _value -= expression.GetValue<int>();
     }
 
-    public void Multiply(ProcessContext context, IExpression expression)
+    public void Multiply(IExpression expression)
     {
       if (expression.DataType == DataType.String)
       {
         throw new Exception("Cannot multiply Int by String.");
       }
 
-      _value *= expression.GetValue<int>(context);
+      _value *= expression.GetValue<int>();
     }
 
-    public void Divide(ProcessContext context, IExpression expression)
+    public void Divide(IExpression expression)
     {
       if (expression.DataType == DataType.String)
       {
         throw new Exception("Cannot divide Int by String.");
       }
 
-      _value /= expression.GetValue<int>(context);
+      _value /= expression.GetValue<int>();
     }
 
     #endregion

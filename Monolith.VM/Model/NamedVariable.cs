@@ -14,10 +14,17 @@ namespace Monolith.VM.Model
 
     private DataType _dataType;
     public DataType DataType => _dataType;
+
+    private IProcess _process;
     public NamedVariable(string name, bool isPointer)
     {
       Name = name;
       _isPointer = isPointer;
+    }
+
+    public void SetProcess(IProcess process)
+    {
+      _process = process;
     }
 
     public IExpression Clone()
@@ -25,46 +32,46 @@ namespace Monolith.VM.Model
       return this;
     }
 
-    public T GetValue<T>(ProcessContext context)
+    public T GetValue<T>()
     {
-      var expression = context.Data.GetValue(Name);
-      return expression.GetValue<T>(context);
+      var expression = _process.Data.GetValue(Name);
+      return expression.GetValue<T>();
     }
 
-    public void SetValue(ProcessContext context, IExpression value)
+    public void SetValue(IExpression value)
     {
       _dataType = value.DataType;
-      context.Data.SetValue(Name, value);
+      _process.Data.SetValue(Name, value);
     }
 
-    public EqualityFlag Compare(ProcessContext context, IExpression expression)
+    public EqualityFlag Compare(IExpression expression)
     {
-      var valueExpression = context.Data.GetValue(Name);
-      return valueExpression.Compare(context, expression);
+      var valueExpression = _process.Data.GetValue(Name);
+      return valueExpression.Compare(expression);
     }
 
-    public void Add(ProcessContext context, IExpression expression)
+    public void Add(IExpression expression)
     {
-      var valueExpression = context.Data.GetValue(Name);
-      valueExpression.Add(context, expression);
+      var valueExpression = _process.Data.GetValue(Name);
+      valueExpression.Add(expression);
     }
 
-    public void Subtract(ProcessContext context, IExpression expression)
+    public void Subtract(IExpression expression)
     {
-      var valueExpression = context.Data.GetValue(Name);
-      valueExpression.Subtract(context, expression);
+      var valueExpression = _process.Data.GetValue(Name);
+      valueExpression.Subtract(expression);
     }
 
-    public void Multiply(ProcessContext context, IExpression expression)
+    public void Multiply(IExpression expression)
     {
-      var valueExpression = context.Data.GetValue(Name);
-      valueExpression.Multiply(context, expression);
+      var valueExpression = _process.Data.GetValue(Name);
+      valueExpression.Multiply(expression);
     }
 
-    public void Divide(ProcessContext context, IExpression expression)
+    public void Divide(IExpression expression)
     {
-      var valueExpression = context.Data.GetValue(Name);
-      valueExpression.Divide(context, expression);
+      var valueExpression = _process.Data.GetValue(Name);
+      valueExpression.Divide(expression);
     }
 
     public override string ToString()

@@ -9,12 +9,12 @@ namespace Monolith.VM.Model
   public interface IExpression 
   {
     DataType DataType { get; }
-    T GetValue<T>(ProcessContext context);
-    EqualityFlag Compare(ProcessContext context, IExpression expression);
-    void Add(ProcessContext context, IExpression expression);
-    void Subtract(ProcessContext context, IExpression expression);
-    void Multiply(ProcessContext context, IExpression expression);
-    void Divide(ProcessContext context, IExpression expression);
+    T GetValue<T>();
+    EqualityFlag Compare(IExpression expression);
+    void Add(IExpression expression);
+    void Subtract(IExpression expression);
+    void Multiply(IExpression expression);
+    void Divide(IExpression expression);
     IExpression Clone();
   }
 }

@@ -89,6 +89,7 @@
     <Compile Include="Model\IVariable.cs" />
     <Compile Include="Model\Machine.cs" />
     <Compile Include="Model\IntLiteral.cs" />
+    <Compile Include="Model\NullExpression.cs" />
     <Compile Include="Model\OpCode.cs" />
     <Compile Include="Model\Priority.cs" />
     <Compile Include="Model\ProcessContext.cs" />

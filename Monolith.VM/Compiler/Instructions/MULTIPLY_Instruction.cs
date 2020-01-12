@@ -21,8 +21,16 @@ namespace Monolith.VM.Compiler.Instructions
 
     public override void Execute(ProcessContext context)
     {
+      if (_variable is NamedVariable namedVariable)
+      {
+        namedVariable.SetProcess(context);
+      }
+      if (_expression is NamedVariable namedExpression)
+      {
+        namedExpression.SetProcess(context);
+      }
       var varExpression = context.Data.GetValue((_variable.Name));
-      varExpression.Multiply(context, _expression);
+      varExpression.Multiply(_expression);
 
     }
   }

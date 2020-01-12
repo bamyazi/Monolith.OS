@@ -21,7 +21,15 @@ namespace Monolith.VM.Compiler.Instructions
     }
     public override void Execute(ProcessContext context)
     {
-      context.EqualityFlag = _leftExpression.Compare(context, _rightExpression);
+      if (_leftExpression is NamedVariable namedLeftExpression)
+      {
+        namedLeftExpression.SetProcess(context);
+      }
+      if (_rightExpression is NamedVariable namedRightExpression)
+      {
+        namedRightExpression.SetProcess(context);
+      }
+      context.EqualityFlag = _leftExpression.Compare(_rightExpression);
 
     }
   }

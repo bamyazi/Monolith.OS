@@ -20,20 +20,20 @@ namespace Monolith.VM.Model
 
     public DataType DataType => DataType.String;
 
-    public T GetValue<T>(ProcessContext context)
+    public T GetValue<T>()
     {
       var castType = typeof(T);
       return (T) Convert.ChangeType(_value, castType);
     }
 
-    public EqualityFlag Compare(ProcessContext context, IExpression expression)
+    public EqualityFlag Compare(IExpression expression)
     {
       if (expression.DataType != DataType.String)
       {
         return EqualityFlag.NotEqual;
       }
 
-      var compareValue = expression.GetValue<string>(context);
+      var compareValue = expression.GetValue<string>();
       if (compareValue == _value)
       {
         return EqualityFlag.Equal;
@@ -42,24 +42,21 @@ namespace Monolith.VM.Model
       return EqualityFlag.NotEqual;
     }
 
-    public void Add(ProcessContext context, IExpression expression)
+    public void Add(IExpression expression)
     {
-      _value += expression.GetValue<string>(context);
+      _value += expression.GetValue<string>();
     }
 
-    public void Subtract(ProcessContext context, IExpression expression)
+    public void Subtract(IExpression expression)
     {
-      throw new NotImplementedException();
     }
 
-    public void Multiply(ProcessContext context, IExpression expression)
+    public void Multiply(IExpression expression)
     {
-      throw new NotImplementedException();
     }
 
-    public void Divide(ProcessContext context, IExpression expression)
+    public void Divide(IExpression expression)
     {
-      throw new NotImplementedException();
     }
 
     #endregion

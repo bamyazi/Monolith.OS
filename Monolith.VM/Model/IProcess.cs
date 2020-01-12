@@ -18,5 +18,7 @@ namespace Monolith.VM.Model
     IDevice GetDevice(string name);
     void RegisterDevice(string name, IDevice device);
     Stack<uint> AddressStack { get; }
+
+    DataTable Data { get; }
   }
 }

@@ -9,11 +9,12 @@ namespace Monolith.VM.Model
     {
       Machine = new Machine();
       ProcessId = processId;
+      Data = new DataTable(this);
     }
 
     public uint ProcessId { get; }
     public Machine Machine { get; }
-    public DataTable Data { get; } = new DataTable();
+    public DataTable Data { get; } 
     public Program Program { get; private set; }
     public uint InstructionPointer { get; private set; }
     public bool Terminated { get; set; }
@@ -60,6 +61,7 @@ namespace Monolith.VM.Model
       InstructionPointer = 0;
       Terminated = false;
     }
+
 
     public void Jump(uint address)
     {

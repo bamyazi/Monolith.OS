@@ -17,6 +17,10 @@ namespace Monolith.VM.Compiler.Instructions
 
     public override void Execute(ProcessContext context)
     {
+      if (_expression is NamedVariable namedExpression)
+      {
+        namedExpression.SetProcess(context);
+      }
       context.DataStack.Push(_expression);
     }
   }

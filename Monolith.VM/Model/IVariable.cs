@@ -10,6 +10,6 @@ namespace Monolith.VM.Model
   public interface IVariable 
   {
     string Name { get; }
-    void SetValue(ProcessContext context, IExpression value);
+    void SetValue(IExpression value);
   }
 }
