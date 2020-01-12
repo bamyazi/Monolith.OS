@@ -23,7 +23,7 @@ namespace Monolith.VM.Compiler.Instructions
     {
       var varExpression = context.Data.GetValue((_variable.Name));
       varExpression.Subtract(context, _expression);
-      Debug.WriteLine($"Subtract {_variable}, {_expression}");
+
     }
   }
 }

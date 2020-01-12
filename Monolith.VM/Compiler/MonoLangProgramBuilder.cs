@@ -57,7 +57,7 @@ namespace Monolith.VM.Compiler
       var labelName = context.name().NAME().GetText();
       if (!_labels.ContainsKey(labelName))
       {
-        Debug.WriteLine($"Label [{labelName}] = {_instructionIndex}");
+
         _labels.Add(labelName, _instructionIndex);
       }
       else

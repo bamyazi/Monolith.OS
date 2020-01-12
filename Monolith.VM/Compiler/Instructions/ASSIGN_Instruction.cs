@@ -22,7 +22,7 @@ namespace Monolith.VM.Compiler.Instructions
     public override void Execute(ProcessContext context)
     {
       _variable.SetValue(context, _expression.Clone());
-      Debug.WriteLine($"Assign {_variable} = {_expression}");
+
     }
   }
 }

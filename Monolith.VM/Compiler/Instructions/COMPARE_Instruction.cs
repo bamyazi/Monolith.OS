@@ -22,7 +22,7 @@ namespace Monolith.VM.Compiler.Instructions
     public override void Execute(ProcessContext context)
     {
       context.EqualityFlag = _leftExpression.Compare(context, _rightExpression);
-      Debug.WriteLine($"Compare {_leftExpression}, {_rightExpression} -> {context.EqualityFlag}");
+
     }
   }
 }

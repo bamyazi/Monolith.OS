@@ -23,7 +23,7 @@ namespace Monolith.VM.Compiler.Instructions
     {
       var varExpression = context.Data.GetValue((_variable.Name));
       varExpression.Multiply(context, _expression);
-      Debug.WriteLine($"Add {_variable}, {_expression}");
+
     }
   }
 }
