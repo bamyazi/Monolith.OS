@@ -8,7 +8,7 @@ namespace Monolith.VM.Model
 
     public StringLiteral(string value)
     {
-      _value = value;
+      _value = value.Replace("\"\"", "\"");
     }
 
     public IExpression Clone()
