@@ -17,11 +17,11 @@ namespace Monolith.VM.Compiler
       if (namedVar != null)
       {
         return new NamedVariable(namedVar.name().NAME().GetText(), isPointer);
-      } 
-      //else if (indexedVar != null)
-      //{
-      //  return new IndexedVariable(indexedVar.name().NAME().GetText(), new Index(0,0));
-      //}
+      }
+      else if (indexedVar != null)
+      {
+        return new IndexedVariable(indexedVar.name().NAME().GetText(), new Index(0, 0), isPointer);
+      }
       return null;
     }
   }
